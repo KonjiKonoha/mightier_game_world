@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -58,7 +63,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit');
+        $user = User::where('id', $id)->first();
+
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -68,9 +75,34 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['string', 'max:255'],
+            'phone' => ['max:15', Rule::unique(User::class)->ignore($id)],
+            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($id)],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('users.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        return Redirect::route('users.edit', $id)->with('status', 'profile-updated');
     }
 
     /**
