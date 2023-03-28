@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users.list');
+
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 });
 
 require __DIR__.'/auth.php';
