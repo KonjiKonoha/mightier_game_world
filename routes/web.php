@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SlotMachineController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,10 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 
     Route::post('/edit/{id}', [UserController::class, 'update'])->name('users.update');
+});
+
+Route::prefix('games')->middleware('auth')->group(function () {
+    Route::get('/slots', [SlotMachineController::class, 'index'])->name('games.slot');
 });
 
 require __DIR__.'/auth.php';

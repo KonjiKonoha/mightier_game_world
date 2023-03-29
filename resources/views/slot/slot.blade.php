@@ -46,7 +46,7 @@
         }
     </script>
 
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('icon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
@@ -54,7 +54,7 @@
 
 <body>
     <!-- PERCENT LOADER START-->
-    <div id="mainLoader"><img src="assets/loader.png" /><br><span>0</span></div>
+    <div id="mainLoader"><img src="{{ asset('assets/loader.png') }}" /><br><span>0</span></div>
     <!-- PERCENT LOADER END-->
 
     <!-- CONTENT START-->
@@ -71,7 +71,7 @@
         <div id="rotateHolder">
             <div class="mobileRotate">
                 <div class="rotateDesc">
-                    <div class="rotateImg"><img src="assets/rotate.png" /></div>
+                    <div class="rotateImg"><img src="{{ asset('assets/rotate.png') }}" /></div>
                     Rotate your device <br />to landscape
                 </div>
             </div>
@@ -87,24 +87,30 @@
     </div>
     <!-- CONTENT END-->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')
+    <script type="text/javascript">
+        var asset_url = '{{ config('app.url') }}'; //Asset URL
+
+        var creditAmount = 100; //game start credit
     </script>
 
-    <script src="js/vendor/detectmobilebrowser.js"></script>
-    <script src="js/vendor/createjs.min.js"></script>
-    <script src="js/vendor/TweenMax.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery.min.js') }}"><\/script>')
+    </script>
 
-    <script src="js/plugins.js"></script>
-    <script src="js/sound.js"></script>
-    <script src="js/canvas.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/mobile.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/loader.js"></script>
-    <script src="js/init.js"></script>
+    <script src="{{ asset('js/vendor/detectmobilebrowser.js') }}"></script>
+    <script src="{{ asset('js/vendor/createjs.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/TweenMax.min.js') }}"></script>
+
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <script src="{{ asset('js/sound.js') }}"></script>
+    <script src="{{ asset('js/canvas.js') }}"></script>
+    <script src="{{ asset('js/settings.js') }}"></script>
+    <script src="{{ asset('js/game.js') }}"></script>
+    <script src="{{ asset('js/mobile.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/loader.js') }}"></script>
+    <script src="{{ asset('js/init.js') }}"></script>
 </body>
 
 

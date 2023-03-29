@@ -2,8 +2,6 @@
 // SETTINGS
 ////////////////////////////////////////////////////////////
 
-var creditAmount = 30; //game start credit
-
 //bet amount array
 var betAmount_arr = [
 						0.05,
@@ -17,7 +15,7 @@ var betAmount_arr = [
 						0.45,
 						0.50
 					];
-					
+
 var layoutPos = {
 					creditY:100, //credit postion y
 					buttonY:670 //machine button position y
@@ -38,18 +36,18 @@ var slotSettings = {
 					};
 
 
-//slots array			
+//slots array
 var slots_arr = [
-					{static:'assets/multiple/slot_01.png', animate:'assets/multiple/slot_01_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_02.png', animate:'assets/multiple/slot_02_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_03.png', animate:'assets/multiple/slot_03_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_04.png', animate:'assets/multiple/slot_04_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_05.png', animate:'assets/multiple/slot_05_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_06.png', animate:'assets/multiple/slot_06_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_07.png', animate:'assets/multiple/slot_07_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_08.png', animate:'assets/multiple/slot_08_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_09.png', animate:'assets/multiple/slot_09_Spritesheet4x3.png'},
-					{static:'assets/multiple/slot_10.png', animate:'assets/multiple/slot_10_Spritesheet4x3.png'}
+					{static:asset_url + 'assets/multiple/slot_01.png', animate:asset_url+'assets/multiple/slot_01_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_02.png', animate:'http://localhost:8000/assets/multiple/slot_02_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_03.png', animate:'http://localhost:8000/assets/multiple/slot_03_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_04.png', animate:'http://localhost:8000/assets/multiple/slot_04_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_05.png', animate:'http://localhost:8000/assets/multiple/slot_05_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_06.png', animate:'http://localhost:8000/assets/multiple/slot_06_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_07.png', animate:'http://localhost:8000/assets/multiple/slot_07_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_08.png', animate:'http://localhost:8000/assets/multiple/slot_08_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_09.png', animate:'http://localhost:8000/assets/multiple/slot_09_Spritesheet4x3.png'},
+					{static:'http://localhost:8000/assets/multiple/slot_10.png', animate:'http://localhost:8000/assets/multiple/slot_10_Spritesheet4x3.png'}
 				];
 
 
@@ -61,47 +59,47 @@ var paytable_arr = [
 					{index:[0,0,0], pay:5, percent:15},
 					{index:[0,0,0,0], pay:10, percent:10},
 					{index:[0,0,0,0,0], pay:15, percent:5},
-					
+
 					{index:[1,1], pay:1, percent:25},
 					{index:[1,1,1], pay:5, percent:15},
 					{index:[1,1,1,1], pay:10, percent:10},
 					{index:[1,1,1,1,1], pay:15, percent:5},
-					
+
 					{index:[2,2], pay:1, percent:25},
 					{index:[2,2,2], pay:5, percent:15},
 					{index:[2,2,2,2], pay:10, percent:10},
 					{index:[2,2,2,2,2], pay:15, percent:5},
-					
+
 					{index:[2,2], pay:1, percent:25},
 					{index:[2,2,2], pay:5, percent:15},
 					{index:[2,2,2,2], pay:10, percent:10},
 					{index:[2,2,2,2,2], pay:15, percent:5},
-					
+
 					{index:[3,3], pay:2, percent:25},
 					{index:[3,3,3], pay:10, percent:15},
 					{index:[3,3,3,3], pay:20, percent:10},
 					{index:[3,3,3,3,3], pay:35, percent:5},
-					
+
 					{index:[4,4], pay:2, percent:25},
 					{index:[4,4,4], pay:10, percent:15},
 					{index:[4,4,4,4], pay:20, percent:10},
 					{index:[4,4,4,4,4], pay:35, percent:5},
-					
+
 					{index:[5,5], pay:5, percent:25},
 					{index:[5,5,5], pay:15, percent:15},
 					{index:[5,5,5,5], pay:25, percent:10},
 					{index:[5,5,5,5,5], pay:50, percent:5},
-					
+
 					{index:[6,6], pay:5, percent:25},
 					{index:[6,6,6], pay:15, percent:15},
 					{index:[6,6,6,6], pay:25, percent:10},
 					{index:[6,6,6,6,6], pay:50, percent:5},
-					
+
 					{index:[7,7], pay:10, percent:25},
 					{index:[7,7,7], pay:25, percent:15},
 					{index:[7,7,7,7], pay:50, percent:10},
 					{index:[7,7,7,7,7], pay:100, percent:5},
-					
+
 					{index:[9,9,9], pay:100, percent:7},
 					{index:[9,9,9,9], pay:150, percent:5},
 					{index:[9,9,9,9,9], pay:200, percent:3}
@@ -120,7 +118,7 @@ var lineSettings = {
 						winTimer:2, //win display timer
 						sign:true, //display sign
 						number:true //display number
-						
+
 					};
 
 //lines array
@@ -188,11 +186,11 @@ var lines_arr = [
 						path:[{x:264,y:438},{x:568,y:438},{x:704,y:285},{x:1013,y:285}],
 						slots:[{c:0,r:2},{c:1,r:2},{c:2,r:1},{c:3,r:0},{c:4,r:0}]
 					}
-				
+
 				];
 
 
-//spin settings	
+//spin settings
 var spinSettings = {
 						slots:15, //total row of slots to spin
 						startSpeed:1, //start speed
