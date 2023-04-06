@@ -15,45 +15,64 @@
 
                     <form method="post" action="{{ route('users.update', $user->id) }}" class="mt-6 space-y-6">
                         @csrf
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                                :value="old('name', $user->name)" required autofocus autocomplete="name" />
-                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-                        </div>
-
-                        <!-- Phone Address -->
-                        <div class="mt-4">
-                            <x-input-label for="phone" :value="__('Phone')" />
-                            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
-                                :value="old('phone')" required autocomplete="username" />
-                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-                        </div>
-
-                        <div>
-                            <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
-                                :value="old('email', $user->email)" />
-                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-
-                            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                        <div class="w-3/4 mx-auto flex">
+                            <div class="w-1/2 p-4">
                                 <div>
-                                    <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
-                                        {{ __('Your email address is unverified.') }}
+                                    <x-input-label for="name" :value="__('Name')" />
+                                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
+                                        :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                                    <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                                </div>
 
-                                        <button form="send-verification"
-                                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                                            {{ __('Click here to re-send the verification email.') }}
-                                        </button>
-                                    </p>
+                                <div class="mt-4">
+                                    <x-input-label for="email" :value="__('Email')" />
+                                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
+                                        :value="old('email', $user->email)" />
+                                    <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-                                    @if (session('status') === 'verification-link-sent')
-                                        <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                                            {{ __('A new verification link has been sent to your email address.') }}
-                                        </p>
+                                    @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                                        <div>
+                                            <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
+                                                {{ __('Your email address is unverified.') }}
+
+                                                <button form="send-verification"
+                                                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                                                    {{ __('Click here to re-send the verification email.') }}
+                                                </button>
+                                            </p>
+
+                                            @if (session('status') === 'verification-link-sent')
+                                                <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                                                    {{ __('A new verification link has been sent to your email address.') }}
+                                                </p>
+                                            @endif
+                                        </div>
                                     @endif
                                 </div>
-                            @endif
+                            </div>
+                            <div class="w-1/2 p-4">
+                                <!-- Phone Address -->
+                                <div>
+                                    <x-input-label for="phone" :value="__('Phone')" />
+                                    <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
+                                        :value="old('phone', $user->phone)" required autocomplete="username" />
+                                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                                </div>
+
+
+                                <!-- User Type -->
+                                <div class="mt-4">
+                                    <x-input-label for="type" :value="__('User Type')" />
+                                    <select id="type" name="type"
+                                        class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full">
+                                        <option value="null" disabled>Please select the user type here.</option>
+                                        <option value="user"{{ ($user->type == 'user') ? ' selected' : '' }}>User</option>
+                                        <option value="admin"{{ ($user->type == 'admin') ? ' selected' : '' }}>Admin</option>
+                                        <option value="moderator"{{ ($user->type == 'moderator') ? ' selected' : '' }}>Moderator</option>
+                                    </select>
+                                    <x-input-error class="mt-2" :messages="$errors->get('type')" />
+                                </div>
+                            </div>
                         </div>
 
                         <div class="flex items-center gap-4">

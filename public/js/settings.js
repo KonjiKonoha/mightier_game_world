@@ -13,7 +13,7 @@ var betAmount_arr = [
 						0.35,
 						0.40,
 						0.45,
-						0.50
+						0.50,
 					];
 
 var layoutPos = {
@@ -39,15 +39,15 @@ var slotSettings = {
 //slots array
 var slots_arr = [
 					{static:asset_url + 'assets/multiple/slot_01.png', animate:asset_url+'assets/multiple/slot_01_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_02.png', animate:'http://localhost:8000/assets/multiple/slot_02_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_03.png', animate:'http://localhost:8000/assets/multiple/slot_03_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_04.png', animate:'http://localhost:8000/assets/multiple/slot_04_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_05.png', animate:'http://localhost:8000/assets/multiple/slot_05_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_06.png', animate:'http://localhost:8000/assets/multiple/slot_06_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_07.png', animate:'http://localhost:8000/assets/multiple/slot_07_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_08.png', animate:'http://localhost:8000/assets/multiple/slot_08_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_09.png', animate:'http://localhost:8000/assets/multiple/slot_09_Spritesheet4x3.png'},
-					{static:'http://localhost:8000/assets/multiple/slot_10.png', animate:'http://localhost:8000/assets/multiple/slot_10_Spritesheet4x3.png'}
+					{static:asset_url + 'assets/multiple/slot_02.png', animate:asset_url + 'assets/multiple/slot_02_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_03.png', animate:asset_url + 'assets/multiple/slot_03_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_04.png', animate:asset_url + 'assets/multiple/slot_04_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_05.png', animate:asset_url + 'assets/multiple/slot_05_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_06.png', animate:asset_url + 'assets/multiple/slot_06_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_07.png', animate:asset_url + 'assets/multiple/slot_07_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_08.png', animate:asset_url + 'assets/multiple/slot_08_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_09.png', animate:asset_url + 'assets/multiple/slot_09_Spritesheet4x3.png'},
+					{static:asset_url + 'assets/multiple/slot_10.png', animate:asset_url + 'assets/multiple/slot_10_Spritesheet4x3.png'}
 				];
 
 

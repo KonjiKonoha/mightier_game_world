@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::simplePaginate(15);
+
         return view('users.list', ['users' => $users]);
     }
 
@@ -52,7 +54,52 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+        return view('users.credit', ['user' => $user]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addCredit(Request $request, $id): RedirectResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'amount' => ['numeric', 'required'],
+            'action_by' => ['required'],
+            'reason' => ['required', 'max:255'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('users.credit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $transaction = new Transaction();
+        $user = User::find($id);
+
+        $transaction->user_id = $id;
+        $transaction->action_by = $request->action_by;
+        $transaction->reason = $request->reason;
+
+        if ($request->action_by == 'deposit') {
+            $transaction->amount = $request->amount;
+            $user->credit = $request->amount + $user->credit;
+        } else {
+            $transaction->amount = ($request->amount * -1);
+            $user->credit = $user->credit - $request->amount;
+        }
+
+        $transaction->save();
+        $user->save();
+
+        return Redirect::route('users.credit', $id)->with('status', 'profile-updated');
     }
 
     /**
@@ -95,6 +142,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->email = $request->email;
+        $user->type = $request->type;
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;

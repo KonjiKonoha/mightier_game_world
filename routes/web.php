@@ -34,8 +34,10 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users.list');
 
     Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-
     Route::post('/edit/{id}', [UserController::class, 'update'])->name('users.update');
+
+    Route::get('/credit/{id}', [UserController::class, 'show'])->name('users.credit');
+    Route::post('/credit/{id}', [UserController::class, 'addCredit'])->name('users.add.credit');
 });
 
 Route::prefix('games')->middleware('auth')->group(function () {
