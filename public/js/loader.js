@@ -21,7 +21,7 @@ function initPreload(){
 	manifest=[
 			{src: asset_url + 'assets/logo.png', id:'logo'},
 			{src: asset_url + 'assets/button_start.png', id:'buttonStart'},
-            {src: asset_url + 'assets/button_exit.png', id:'buttonExit'},
+            {src: asset_url + 'assets/button_exit.png', id:'buttonEnd'},
 
 			//multi-line slots
 			{src: asset_url + 'assets/multiple/item_machine.png', id:'itemMachine'},

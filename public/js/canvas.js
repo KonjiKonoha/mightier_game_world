@@ -61,6 +61,11 @@ function buildGameCanvas(){
 	buttonStart.x = canvasW/2;
 	buttonStart.y = canvasH/100 * 80;
 
+    buttonEnd = new createjs.Bitmap(loader.getResult('buttonEnd'));
+	centerReg(buttonEnd);
+	buttonEnd.x = canvasW/1.05;
+	buttonEnd.y = canvasH/100 * 80;
+
 	//game
 	for(var n = 0; n<slots_arr.length; n++){
 		$.slots[n] = new createjs.Bitmap(loader.getResult('slot'+n));
@@ -425,7 +430,7 @@ function buildGameCanvas(){
 		guideline.graphics.setStrokeStyle(2).beginStroke('red').drawRect((stageW-contentW)/2, (stageH-contentH)/2, contentW, contentH);
 	}
 
-	mainContainer.addChild(logo, buttonStart);
+	mainContainer.addChild(logo, buttonStart, buttonEnd);
 	gameContainer.addChild(itemSlotFrameAnimate, itemMachine, itemHandleAnimate, slotContainer, linesContainer, slotWinContainer, itemShadow, slotWinFrameContainer, itemDisplayLines, itemDisplayBet, itemDisplayMaxBet, itemDisplaySpin, buttonInfo, buttonLines, buttonBet, buttonMaxBet, buttonSpin, linesTxt, betTxt, maxBetTxt, spinTxt, itemCredit, itemCreditAlert, itemCreditAnimate, creditTxt, infoContainer);
 	resultContainer.addChild(itemResult, resultTitleTxt, resultScoreTxt, buttonContinue);
 	optionsContainer.addChild(buttonFullscreen, buttonSoundOn, buttonSoundOff, buttonExit);

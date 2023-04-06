@@ -90,7 +90,9 @@
     <script type="text/javascript">
         var asset_url = '{{ config('app.url') }}'; //Asset URL
 
-        var creditAmount = 100; //game start credit
+        var creditAmount = {{ Auth()->user()->credit }}; //game start credit
+
+        var encrypt = '{{ encrypt( Auth()->user()->id ) }}';
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
