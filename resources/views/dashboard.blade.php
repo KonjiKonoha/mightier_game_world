@@ -20,6 +20,7 @@
                     <p class="mt-8">Contact: {{ Auth::user()->phone }}</p>
                 </div>
 
+                <!-- Jackpot: Slot Machine -->
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
                     <a href="{{ route('games.slot') }}">
@@ -33,6 +34,23 @@
                         </a>
                     @endif
                 </div>
+                <!-- /. End of Jackpot: Slot Machine -->
+
+                <!-- Classic: Slot Machine -->
+                <div
+                    class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
+                    <a href="{{ route('games.slot.classic') }}">
+                        <img src="{{ asset('assets/logo_classic.png') }}" alt="Game 1" class="object-cover" width="300px">
+                        Classic - Slot Machine
+                    </a>
+                    @if (Auth()->user()->type == 'admin')
+                        <a href="{{ route('games.control', 2) }}"
+                            class="border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                            Control
+                        </a>
+                    @endif
+                </div>
+                <!-- /. End of Classic: Slot Machine -->
             </div>
         </div>
     </div>

@@ -45,6 +45,8 @@ Route::prefix('games')->middleware('auth')->group(function () {
     Route::post('/control/{id}', [UserController::class, 'storeControl'])->name('games.control.store');
 
     Route::get('/slots', [SlotMachineController::class, 'index'])->name('games.slot');
+
+    Route::get('/classic', [SlotMachineController::class, 'classic'])->name('games.slot.classic');
 });
 
 require __DIR__.'/auth.php';
