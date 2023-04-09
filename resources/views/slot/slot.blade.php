@@ -93,6 +93,8 @@
         var creditAmount = {{ Auth()->user()->credit }}; //game start credit
 
         var encrypt = '{{ encrypt( Auth()->user()->id ) }}';
+
+        var rate = {{ $control->win_rate }};
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

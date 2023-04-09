@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\GameControl;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -30,20 +31,41 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function gameControl($id)
     {
-        //
+        $game = GameControl::find($id);
+
+        return view('game-control', ['game' => $game]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeControl(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'win_rate' => ['required', 'numeric', 'between:0.1,99.99'],
+            'game_id' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('games.control', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $game = GameControl::find($id);
+
+        $game->win_rate = $request->win_rate;
+
+        $game->save();
+
+        return Redirect::route('games.control', $id)->with('status', 'profile-updated');
     }
 
     /**

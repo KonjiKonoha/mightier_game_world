@@ -202,7 +202,7 @@ function goPage(page){
 			stopGame();
 
 			var tweenValue = {value:0}
-			TweenMax.to(tweenValue, 1, {value:playerData.totalWin, overwrite:true, onUpdate:function(){
+			TweenMax.to(tweenValue, 1, {value:playerData.creditSum, overwrite:true, onUpdate:function(){
 				resultScoreTxt.text = resultScoreText.replace('[NUMBER]', formatCurrency(tweenValue.value));
 			}});
 

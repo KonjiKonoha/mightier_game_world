@@ -14,6 +14,11 @@ var betAmount_arr = [
 						0.40,
 						0.45,
 						0.50,
+                        0.60,
+                        0.70,
+                        0.80,
+                        0.90,
+                        1.00,
 					];
 
 var layoutPos = {
@@ -55,54 +60,54 @@ var slots_arr = [
 var enablePercentage = false;
 var overallPercent = 600;
 var paytable_arr = [
-					{index:[0,0], pay:1, percent:25},
-					{index:[0,0,0], pay:5, percent:15},
-					{index:[0,0,0,0], pay:10, percent:10},
-					{index:[0,0,0,0,0], pay:15, percent:5},
+					{index:[0,0], pay:1, percent:25*rate},
+					{index:[0,0,0], pay:5, percent:15*rate},
+					{index:[0,0,0,0], pay:10, percent:10*rate},
+					{index:[0,0,0,0,0], pay:15, percent:5*rate},
 
-					{index:[1,1], pay:1, percent:25},
-					{index:[1,1,1], pay:5, percent:15},
-					{index:[1,1,1,1], pay:10, percent:10},
-					{index:[1,1,1,1,1], pay:15, percent:5},
+					{index:[1,1], pay:1, percent:25*rate},
+					{index:[1,1,1], pay:5, percent:15*rate},
+					{index:[1,1,1,1], pay:10, percent:10*rate},
+					{index:[1,1,1,1,1], pay:15, percent:5*rate},
 
-					{index:[2,2], pay:1, percent:25},
-					{index:[2,2,2], pay:5, percent:15},
-					{index:[2,2,2,2], pay:10, percent:10},
-					{index:[2,2,2,2,2], pay:15, percent:5},
+					{index:[2,2], pay:1, percent:25*rate},
+					{index:[2,2,2], pay:5, percent:15*rate},
+					{index:[2,2,2,2], pay:10, percent:10*rate},
+					{index:[2,2,2,2,2], pay:15, percent:5*rate},
 
-					{index:[2,2], pay:1, percent:25},
-					{index:[2,2,2], pay:5, percent:15},
-					{index:[2,2,2,2], pay:10, percent:10},
-					{index:[2,2,2,2,2], pay:15, percent:5},
+					{index:[2,2], pay:1, percent:25*rate},
+					{index:[2,2,2], pay:5, percent:15*rate},
+					{index:[2,2,2,2], pay:10, percent:10*rate},
+					{index:[2,2,2,2,2], pay:15, percent:5*rate},
 
-					{index:[3,3], pay:2, percent:25},
-					{index:[3,3,3], pay:10, percent:15},
-					{index:[3,3,3,3], pay:20, percent:10},
-					{index:[3,3,3,3,3], pay:35, percent:5},
+					{index:[3,3], pay:2, percent:25*rate},
+					{index:[3,3,3], pay:10, percent:15*rate},
+					{index:[3,3,3,3], pay:20, percent:10*rate},
+					{index:[3,3,3,3,3], pay:35, percent:5*rate},
 
-					{index:[4,4], pay:2, percent:25},
-					{index:[4,4,4], pay:10, percent:15},
-					{index:[4,4,4,4], pay:20, percent:10},
-					{index:[4,4,4,4,4], pay:35, percent:5},
+					{index:[4,4], pay:2, percent:25*rate},
+					{index:[4,4,4], pay:10, percent:15*rate},
+					{index:[4,4,4,4], pay:20, percent:10*rate},
+					{index:[4,4,4,4,4], pay:35, percent:5*rate},
 
-					{index:[5,5], pay:5, percent:25},
-					{index:[5,5,5], pay:15, percent:15},
-					{index:[5,5,5,5], pay:25, percent:10},
-					{index:[5,5,5,5,5], pay:50, percent:5},
+					{index:[5,5], pay:5, percent:25*rate},
+					{index:[5,5,5], pay:15, percent:15*rate},
+					{index:[5,5,5,5], pay:25, percent:10*rate},
+					{index:[5,5,5,5,5], pay:50, percent:5*rate},
 
-					{index:[6,6], pay:5, percent:25},
-					{index:[6,6,6], pay:15, percent:15},
-					{index:[6,6,6,6], pay:25, percent:10},
-					{index:[6,6,6,6,6], pay:50, percent:5},
+					{index:[6,6], pay:5, percent:25*rate},
+					{index:[6,6,6], pay:15, percent:15*rate},
+					{index:[6,6,6,6], pay:25, percent:10*rate},
+					{index:[6,6,6,6,6], pay:50, percent:5*rate},
 
-					{index:[7,7], pay:10, percent:25},
-					{index:[7,7,7], pay:25, percent:15},
-					{index:[7,7,7,7], pay:50, percent:10},
-					{index:[7,7,7,7,7], pay:100, percent:5},
+					{index:[7,7], pay:10, percent:25*rate},
+					{index:[7,7,7], pay:25, percent:15*rate},
+					{index:[7,7,7,7], pay:50, percent:10*rate},
+					{index:[7,7,7,7,7], pay:100, percent:5*rate},
 
-					{index:[9,9,9], pay:100, percent:7},
-					{index:[9,9,9,9], pay:150, percent:5},
-					{index:[9,9,9,9,9], pay:200, percent:3}
+					{index:[9,9,9], pay:100, percent:7*rate},
+					{index:[9,9,9,9], pay:150, percent:5*rate},
+					{index:[9,9,9,9,9], pay:200, percent:3*rate}
 				];
 
 //wild array
@@ -203,7 +208,7 @@ var spinSettings = {
 
 var exitMessage = 'ARE YOUR SURE YOU\nWANT TO QUIT THE GAME?'; //exit game message
 
-var resultTitleText = 'YOU HAVE WON'; //result title text
+var resultTitleText = 'YOU HAVE'; //result title text
 var resultScoreText = '$[NUMBER]'; //result score text
 
 

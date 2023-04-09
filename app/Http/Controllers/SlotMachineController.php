@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GameControl;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class SlotMachineController extends Controller
      */
     public function index()
     {
-        return view('slot.slot');
+        $game = GameControl::find(1);
+
+        return view('slot.slot', ['control' => $game]);
     }
 
     /**

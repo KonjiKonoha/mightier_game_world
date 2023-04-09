@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Transaction extends Model
+class GameControl extends Model
 {
     use HasFactory;
 
@@ -16,10 +15,8 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'amount',
-        'reason',
-        'action_by',
+        'game_id',
+        'win_rate',
     ];
 
     /**
@@ -28,14 +25,6 @@ class Transaction extends Model
      * @var double
      */
     protected $casts = [
-        'amount' => 'double',
+        'win_rate' => 'double',
     ];
-
-    /**
-     * Get the user that owns the transaction.
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 }

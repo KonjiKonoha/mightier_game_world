@@ -9,14 +9,29 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Welcome from {{ config('app.name') }}. Please enjoy the games.
+                    <p>Welcome <a href="{{ route('profile.edit') }}"><strong>{{ Auth()->user()->name }}</strong></a> from
+                        {{ config('app.name') }}. Please enjoy the games.</p>
+                    <p class="text-xl font-bold text-gray-700 dark:text-gray-100 mt-8">My information</p>
+                    <p class="mt-8">Credit: <strong
+                            class="border p-4 bg-blue-200 rounded-lg shadow dark:bg-blue-800 dark:shadow-xl">$
+                            {{ number_format(Auth()->user()->credit, 2) }}</strong> <span
+                            class="text-gray-400 dark:text-green-400">(If you want to fill the credit,
+                            please feel free to contact to Game Master.)</span></p>
+                    <p class="mt-8">Contact: {{ Auth::user()->phone }}</p>
                 </div>
 
-                <div class="p-6 text-gray-900 dark:text-gray-100 text-center w-64">
+                <div
+                    class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
                     <a href="{{ route('games.slot') }}">
                         <img src="{{ asset('assets/logo.png') }}" alt="Game 1" class="object-cover" width="300px">
                         Jackpot - Slot Machine
                     </a>
+                    @if (Auth()->user()->type == 'admin')
+                        <a href="{{ route('games.control', 1) }}"
+                            class="border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                            Control
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
