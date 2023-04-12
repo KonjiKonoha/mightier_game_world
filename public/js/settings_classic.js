@@ -50,10 +50,10 @@ var slots_arr = [
 var enablePercentage = false; //option to have result base on percentage
 var overallPercent = 200;
 var paytable_arr = [
-					{index:[0,1,2], pay:10, percent:50*rate},
-					{index:[0,0,0], pay:30, percent:40*rate},
-					{index:[1,1,1], pay:60, percent:30*rate},
-					{index:[2,2,2], pay:100, percent:20*rate},
+					{index:[0,1,2], pay:10, percent:20*rate},
+					{index:[0,0,0], pay:30, percent:18*rate},
+					{index:[1,1,1], pay:60, percent:15*rate},
+					{index:[2,2,2], pay:100, percent:12*rate},
 					{index:[3,3,3], pay:200, percent:10*rate},
 					{index:[4,4,4], pay:300, percent:5*rate}
 				];

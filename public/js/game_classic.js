@@ -46,13 +46,13 @@ function buildGameButton(){
 		playSound('soundClick');
 
 		//multi-line slots
-		/*gameData.resultArray = [
+		gameData.resultArray = [
 					9,6,4,0,9,
 					2,3,1,6,4,
-					6,2,1,2,3];*/
+					6,2,1,2,3];
 
 		//classic three line slots
-		gameData.resultArray = [2,2,2];
+		//gameData.resultArray = [2,2,2];
 
 		startSpin();
 	});
@@ -60,6 +60,7 @@ function buildGameButton(){
 	itemHandleAnimate.cursor = "pointer";
 	itemHandleAnimate.addEventListener("click", function(evt) {
 		playSound('soundClick');
+
 		startSpin();
 	});
 
@@ -206,7 +207,7 @@ function goPage(page){
 				resultScoreTxt.text = resultScoreText.replace('[NUMBER]', formatCurrency(tweenValue.value));
 			}});
 
-			saveGame(playerData.creditSum);
+			saveGame(playerData.credit);
 
             //window.location.href = asset_url + "dashboard";
 		break;

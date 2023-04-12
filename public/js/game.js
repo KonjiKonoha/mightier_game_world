@@ -206,7 +206,7 @@ function goPage(page){
 				resultScoreTxt.text = resultScoreText.replace('[NUMBER]', formatCurrency(tweenValue.value));
 			}});
 
-			saveGame(playerData.creditSum);
+			saveGame(playerData.credit);
 
             //window.location.href = asset_url + "dashboard";
 		break;

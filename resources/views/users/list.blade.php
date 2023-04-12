@@ -11,11 +11,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="text-4xl font-extrabold dark:text-white mb-4">User List</h2>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <table class="w-full bg-white dark:bg-gray-800 shadow-md rounded my-6">
                             <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                class="bg-gray-200 dark:bg-gray-700">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <div class="flex items-center">
                                             Name <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
@@ -25,7 +25,7 @@
                                                 </svg></a>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <div class="flex items-center">
                                             Phone <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
@@ -35,7 +35,7 @@
                                                 </svg></a>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <div class="flex items-center">
                                             Email <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
@@ -45,7 +45,7 @@
                                                 </svg></a>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <div class="flex items-center">
                                             Type <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
@@ -55,7 +55,7 @@
                                                 </svg></a>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <div class="flex items-center">
                                             Credit <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                                                     class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
@@ -65,17 +65,16 @@
                                                 </svg></a>
                                         </div>
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="text-left py-3 px-4 uppercase font-semibold text-sm text-gray-700 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">
                                         <span class="sr-only">Edit</span>
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-gray-700 dark:text-gray-100">
                                 @foreach ($users as $user)
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-900">
+                                        <td scope="row"
+                                            class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             {{ $user->name }}
                                             <span
                                                 class="inline-flex items-center p-1 mr-2 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full dark:bg-gray-700 dark:text-blue-400">
@@ -87,26 +86,26 @@
                                                 </svg>
                                                 <span class="sr-only">Verified</span>
                                             </span>
-                                        </th>
-                                        <td class="px-6 py-4">
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             {{ $user->phone }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             {{ $user->email }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             {{ $user->type }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             $ {{ number_format($user->credit, 2) }}
                                         </td>
-                                        <td class="px-6 py-4 text-right">
+                                        <td class="py-3 px-4 border-b border-gray-300 dark:border-gray-600">
                                             <a href="{{ route('users.credit', $user->id) }}"
-                                                class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                class="inline-block bg-blue-500 hover:bg-blue-700 dark:bg-orange-500 darkhover:bg-orange-700 text-white dark:text-gray-900 font-bold py-2 px-4 rounded">
                                                 Credit
                                             </a>
                                             <a href="{{ route('users.edit', $user->id) }}"
-                                                class="inline-block bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+                                                class="inline-block bg-orange-500 hover:bg-orange-700 dark:bg-orange-500 darkhover:bg-orange-700 text-white dark:text-gray-900 font-bold py-2 px-4 rounded">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

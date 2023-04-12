@@ -29,7 +29,7 @@ class SlotMachineController extends Controller
      */
     public function classic()
     {
-        $game = GameControl::find(1);
+        $game = GameControl::find(2);
 
         return view('slot.classic', ['control' => $game]);
     }
