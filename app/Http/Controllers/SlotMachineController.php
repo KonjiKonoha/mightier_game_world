@@ -42,7 +42,7 @@ class SlotMachineController extends Controller
      */
     public function store(Request $request)
     {
-        $current_user = decrypt( $request->encrypt );
+        $current_user = decrypt($request->encrypt);
         $transaction = new Transaction();
         $user = User::find($current_user);
 
@@ -50,15 +50,14 @@ class SlotMachineController extends Controller
 
         $transaction->user_id = $current_user;
         $transaction->action_by = 'Slot game 1 played';
+        $transaction->amount = $result;
 
         if ($result > 0) {
             $transaction->reason = 'Win Slot game 1';
+            $user->credit = $request->score;
         } else {
             $transaction->reason = 'Sorry! You are not unlucky in Slot game 1 today.';
         }
-
-        $transaction->amount = $result;
-        $user->credit = $request->score;
 
         $transaction->save();
         $user->save();
