@@ -22,33 +22,47 @@
 
                 <!-- Jackpot: Slot Machine -->
                 <div
-                    class="flex item-center p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
-                    <a href="{{ route('games.slot') }}" class="mb-4">
-                        <img src="{{ asset('assets/logo.png') }}" alt="Game 1" class="object-cover" width="300px">
-                        Jackpot - Slot Machine
-                    </a>
-                    @if (Auth()->user()->type == 'admin')
-                        <a href="{{ route('games.control', 1) }}"
-                            class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
-                            Control
+                    class="flex item-center p-6 text-gray-900 dark:text-gray-100 text-center">
+                    <div>
+                        <a href="{{ route('games.slot') }}">
+                            <img src="{{ asset('assets/logo.png') }}" alt="Game 1" class="object-cover" width="300px">
+                            Jackpot - Slot Machine
                         </a>
-                    @endif
+                        @if (Auth()->user()->type == 'admin')
+                            <a href="{{ route('games.control', 1) }}"
+                                class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                                Control
+                            </a>
+                        @endif
+                    </div>
+
+                    <div>
+                        <a href="{{ route('games.slot.classic') }}" class="mb-4">
+                            <img src="{{ asset('assets/logo_classic.png') }}" alt="Game 1" class="object-cover" width="300px">
+                            Classic - Slot Machine
+                        </a>
+                        @if (Auth()->user()->type == 'admin')
+                            <a href="{{ route('games.control', 2) }}"
+                                class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                                Control
+                            </a>
+                        @endif
+                    </div>
                 </div>
                 <!-- /. End of Jackpot: Slot Machine -->
 
                 <!-- Classic: Slot Machine -->
                 <div
-                    class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
-                    <a href="{{ route('games.slot.classic') }}" class="mb-4">
-                        <img src="{{ asset('assets/logo_classic.png') }}" alt="Game 1" class="object-cover" width="300px">
-                        Classic - Slot Machine
-                    </a>
-                    @if (Auth()->user()->type == 'admin')
-                        <a href="{{ route('games.control', 2) }}"
-                            class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
-                            Control
-                        </a>
-                    @endif
+                    class="p-6 text-gray-900 dark:text-gray-100 text-center">
+                    <div>
+                        <h2>Contact us</h2>
+                        <p>
+                            <ul>
+                                <li><a href="#">Facebook Page</a></li>
+                                <li><a href="#">Viber</a></li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
                 <!-- /. End of Classic: Slot Machine -->
             </div>
