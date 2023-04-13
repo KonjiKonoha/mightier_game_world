@@ -22,14 +22,14 @@
 
                 <!-- Jackpot: Slot Machine -->
                 <div
-                    class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
-                    <a href="{{ route('games.slot') }}">
+                    class="flex item-center p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
+                    <a href="{{ route('games.slot') }}" class="mb-4">
                         <img src="{{ asset('assets/logo.png') }}" alt="Game 1" class="object-cover" width="300px">
                         Jackpot - Slot Machine
                     </a>
                     @if (Auth()->user()->type == 'admin')
                         <a href="{{ route('games.control', 1) }}"
-                            class="border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                            class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
                             Control
                         </a>
                     @endif
@@ -39,13 +39,13 @@
                 <!-- Classic: Slot Machine -->
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100 text-center w-64 hover:bg-gray-400 dark:hover:bg-gray-700">
-                    <a href="{{ route('games.slot.classic') }}">
+                    <a href="{{ route('games.slot.classic') }}" class="mb-4">
                         <img src="{{ asset('assets/logo_classic.png') }}" alt="Game 1" class="object-cover" width="300px">
                         Classic - Slot Machine
                     </a>
                     @if (Auth()->user()->type == 'admin')
                         <a href="{{ route('games.control', 2) }}"
-                            class="border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                            class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
                             Control
                         </a>
                     @endif

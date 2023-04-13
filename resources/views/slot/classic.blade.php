@@ -109,7 +109,7 @@
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/sound.js') }}"></script>
     <script src="{{ asset('js/canvas.js') }}"></script>
-    <script src="{{ asset('js/settings_multiple.js') }}"></script>
+    <script src="{{ asset('js/settings_classic.js') }}"></script>
     <script src="{{ asset('js/game_classic.js') }}"></script>
     <script src="{{ asset('js/mobile.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
