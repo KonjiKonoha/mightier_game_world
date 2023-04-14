@@ -23,27 +23,27 @@
                 <!-- Jackpot: Slot Machine -->
                 <div
                     class="flex item-center p-6 text-gray-900 dark:text-gray-100 text-center">
-                    <div>
+                    <div class="hover:bg-yellow-200 p-8 dark:hover:text-gray-700">
                         <a href="{{ route('games.slot') }}">
                             <img src="{{ asset('assets/logo.png') }}" alt="Game 1" class="object-cover" width="300px">
                             Jackpot - Slot Machine
                         </a>
                         @if (Auth()->user()->type == 'admin')
                             <a href="{{ route('games.control', 1) }}"
-                                class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
-                                Control
+                                class="mb-4 border p-4 bg-blue-700 text-white hover:bg-green-500 rounded-lg dark:bg-gray-100 dark:text-gray-700 dark:hover:shadow-lg">
+                               Control
                             </a>
                         @endif
                     </div>
 
-                    <div>
-                        <a href="{{ route('games.slot.classic') }}" class="mb-4">
+                    <div class="hover:bg-yellow-200 p-8 dark:hover:text-gray-700">
+                        <a href="{{ route('games.slot.classic') }}">
                             <img src="{{ asset('assets/logo_classic.png') }}" alt="Game 1" class="object-cover" width="300px">
                             Classic - Slot Machine
                         </a>
                         @if (Auth()->user()->type == 'admin')
                             <a href="{{ route('games.control', 2) }}"
-                                class="mb-4 border p-4 bg-gray-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg">
+                                class="mb-4 border p-4 bg-blue-700 text-white hover:bg-green-500 rounded-lg dark:bg-gray-100 dark:hover:shadow-lg  dark:text-gray-700">
                                 Control
                             </a>
                         @endif
@@ -55,11 +55,11 @@
                 <div
                     class="p-6 text-gray-900 dark:text-gray-100 text-center">
                     <div>
-                        <h2>Contact us</h2>
+                        <h2 class="text-3xl lg:text-4xl">Contact us</h2>
                         <p>
                             <ul>
-                                <li><a href="#">Facebook Page</a></li>
-                                <li><a href="#">Viber</a></li>
+                                <li><a href="#" class="hover:text-blue-600"><i class="fab fa-facebook-square"></i> Mighty Fighter</a></li>
+                                <li><a href="#" class="hover:text-blue-600"><i class="fab fa-viber"></i> +95 99 77 88 66 55</a></li>
                             </ul>
                         </p>
                     </div>
