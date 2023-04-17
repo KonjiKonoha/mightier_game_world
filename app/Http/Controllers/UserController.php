@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\GameControl;
 use App\Models\Transaction;
+use Illuminate\Support\Str;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -176,13 +178,96 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function report()
     {
-        //
+        $firstDate = Str::replace('[*]', '1', Carbon::now()->format('Y-m-[*] 0:00:00'));
+        $today = Carbon::now()->format('Y-m-d H:i:s');
+
+        $deposits = Transaction::where('action_by', '=', 'deposit')
+            ->whereBetween('created_at', [$firstDate, $today])
+            ->get();
+        $totalDeposit = 0.0;
+
+        foreach ($deposits as $row) {
+            $totalDeposit += $row->amount;
+        }
+
+        $withdrawals = Transaction::where('action_by', '=', 'withdrawal')
+            ->whereBetween('created_at', [$firstDate, $today])
+            ->get();
+        $totalWithdraw = 0.0;
+
+        foreach ($withdrawals as $row) {
+            $totalWithdraw += ($row->amount * -1);
+        }
+
+        $credits = User::get();
+        $totalCredit = 0.0;
+
+        foreach ($credits as $row) {
+            $totalCredit += $row->credit;
+        }
+
+        $pnl = $totalDeposit - $totalWithdraw - $totalCredit;
+
+        return view('financial-report', [
+            'total_deposit' => $totalDeposit,
+            'total_withdrawal' => $totalWithdraw,
+            'total_credit' => $totalCredit,
+            'pnl' => $pnl
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sales()
+    {
+        $firstDate = Str::replace('[*]', '1', Carbon::now()->format('Y-m-[*] 0:00:00'));
+        $today = Carbon::now()->format('Y-m-d H:i:s');
+
+        $data = [];
+
+        for ($i = 0; $i < date('j', strtotime($today)); $i++) {
+            $sd = Str::replace('[*]', $i + 1, Carbon::now()->format('Y-m-[*] 00:00:00'));
+            $ed = Str::replace('[*]', $i + 1, Carbon::now()->format('Y-m-[*] 23:59:59'));
+
+            $deposits = Transaction::where('action_by', '=', 'deposit')
+                ->whereBetween('created_at', [$sd, $ed])
+                ->get();
+
+            $totalDeposit = 0.0;
+
+            foreach ($deposits as $row) {
+                $totalDeposit += $row->amount;
+            }
+
+            $withdrawals = Transaction::where('action_by', '=', 'withdrawal')
+                ->whereBetween('created_at', [$sd, $ed])
+                ->get();
+
+            $totalWithdraw = 0.0;
+
+            foreach ($withdrawals as $row) {
+                $totalWithdraw += ($row->amount * -1);
+            }
+
+            $data[$i] = [
+                'date' => date('F j, Y', strtotime($sd)),
+                'deposit' => $totalDeposit,
+                'withdrawal' => $totalWithdraw,
+            ];
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data,
+        ]);
     }
 }

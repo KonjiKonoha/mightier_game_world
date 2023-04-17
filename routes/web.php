@@ -38,6 +38,8 @@ Route::prefix('users')->middleware('auth')->group(function () {
 
     Route::get('/credit/{id}', [UserController::class, 'show'])->name('users.credit');
     Route::post('/credit/{id}', [UserController::class, 'addCredit'])->name('users.add.credit');
+
+    Route::get('/report', [UserController::class, 'report'])->name('financial.report');
 });
 
 Route::prefix('games')->middleware('auth')->group(function () {
