@@ -50,7 +50,7 @@ class UserController extends Controller
     public function storeControl(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'win_rate' => ['required', 'numeric', 'between:0.1,99.99'],
+            'win_rate' => ['required', 'numeric', 'between:-99.99,99.99'],
             'game_id' => ['required'],
         ]);
 

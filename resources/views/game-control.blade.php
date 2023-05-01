@@ -29,7 +29,7 @@
                                 <div>
                                     <x-input-label for="win_rate" :value="__('Win Rate')" />
                                     <x-text-input id="win_rate" class="block mt-1 w-full" type="text"
-                                        name="win_rate" :value="old('win_rate', number_format($game->win_rate, 2))" required min="0.1" max="99.99" />
+                                        name="win_rate" :value="old('win_rate', number_format($game->win_rate, 2))" required min="-99.99" max="99.99" />
                                     <x-input-error :messages="$errors->get('win_rate')" class="mt-2" />
                                 </div>
                             </div>

@@ -29,7 +29,7 @@ var winBetText = "WIN: $[NUMBER]"; //win text display
 var slotSettings = {
 						width:135, //slot width
 						height:135, //slot height
-						row:3, //total row
+						row:15, //total row
 						column:5, //total column
 						offsetX:0, //offset position x
 						offsetY:-20 //offset position y
@@ -98,6 +98,11 @@ var paytable_arr = [
 					{index:[7,7,7], pay:25, percent:15},
 					{index:[7,7,7,7], pay:50, percent:10},
 					{index:[7,7,7,7,7], pay:100, percent:5},
+
+                    {index:[8,8], pay:10, percent:25},
+					{index:[8,8,8], pay:25, percent:15},
+					{index:[8,8,8,8], pay:50, percent:10},
+					{index:[8,8,8,8,8], pay:100, percent:5},
 
 					{index:[9,9,9], pay:100, percent:7},
 					{index:[9,9,9,9], pay:150, percent:5},
