@@ -49,6 +49,8 @@ Route::prefix('games')->middleware('auth')->group(function () {
     Route::get('/slots', [SlotMachineController::class, 'index'])->name('games.slot');
 
     Route::get('/classic', [SlotMachineController::class, 'classic'])->name('games.slot.classic');
+
+    Route::get('/simple', [SlotMachineController::class, 'simple'])->name('games.slot.simple');
 });
 
 require __DIR__.'/auth.php';

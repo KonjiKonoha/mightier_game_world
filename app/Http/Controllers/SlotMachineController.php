@@ -35,6 +35,18 @@ class SlotMachineController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function simple()
+    {
+        $game = GameControl::find(2);
+
+        return view('slot.simple', ['control' => $game]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
