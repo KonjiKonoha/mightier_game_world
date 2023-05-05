@@ -80,7 +80,7 @@
         <div class="row justify-content-center my-3">
             <div class="col col-auto">
                 <button class="btn btn-warning w-auto" type="button" id="checkout">
-                    <i class="fas fa-money-bill-alt"></i> CHECKOUT
+                    <i class="fas fa-money-bill-alt"></i> Exit
                 </button>
                 <button class="btn btn-primary w-auto" type="button" data-toggle="modal" data-target="#payTable">
                     <i class="fas fa-money-bill-alt"></i> Pay Table
