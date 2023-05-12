@@ -44,7 +44,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Credits</span>
                     </div>
-                    <input class="form-control" type="number" id="balance" min="1" max="5000" />
+                    <input class="form-control" type="number" id="balance" min="1" max="500000" />
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-dollar-sign green"></i></span>
                     </div>
@@ -56,7 +56,7 @@
                         <span class="input-group-text">BETx</span>
                     </div>
                     <input class="form-control" type="number" id="bet" min="1" value="1"
-                        max="3" />
+                        max="5" />
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-coins gold"></i></span>
                     </div>
@@ -65,16 +65,24 @@
         </div>
         <div class="row justify-content-center">
             <div class="col col-auto">
-                <select id="mode" class="btn btn-default">
-                    <option value="random">Random</option>
-                    <option value="fixed">Fixed</option>
-                </select>
-                <select id="where" class="btn btn-default">
-                    <option value="top">top</option>
-                    <option value="middle">middle</option>
-                    <option value="bottom">bottom</option>
-                </select>
-                <select id="what" class="btn btn-default"></select>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fab fa-cog"></i> Option
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <select id="mode" class="btn btn-default">
+                            <option value="random">Random</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                        <select id="where" class="btn btn-default">
+                            <option value="top">top</option>
+                            <option value="middle">middle</option>
+                            <option value="bottom">bottom</option>
+                        </select>
+                        <select id="what" class="btn btn-default"></select>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row justify-content-center my-3">
@@ -199,6 +207,10 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        const asset_url = '{{ config('app.url') }}';
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="{{ asset('simple/js/reel.js') }}"></script>
     <script src="{{ asset('simple/js/slot.js') }}"></script>
     <script type="text/javascript">
@@ -217,6 +229,7 @@
             bet: find('#bet'),
             win: find('#cwin'),
             checkout: find('#checkout'),
+            encrypt: '{{ csrf_token() }}',
             reel: {
                 width: 140,
                 height: 120,
@@ -227,7 +240,7 @@
             imgMap: ['BAR', '2xBAR', '3xBAR', '7', 'Cherry'],
             imgStartPts: [...range(-2, 2)],
             player: {
-                money: 10,
+                money: {{ Auth()->user()->credit }},
             },
             imgDot: null,
             autoModeDelay: 3000,
@@ -238,7 +251,9 @@
         };
 
         //Resource loader
-        Resources('{{ asset('simple/img/BAR.png') }}', '{{ asset('simple/img/2xBAR.png') }}', '{{ asset('simple/img/3xBAR.png') }}', '{{ asset('simple/img/7.png') }}', '{{ asset('simple/img/Cherry.png') }}').onLoad(
+        Resources('{{ asset('simple/img/BAR.png') }}', '{{ asset('simple/img/2xBAR.png') }}',
+            '{{ asset('simple/img/3xBAR.png') }}', '{{ asset('simple/img/7.png') }}',
+            '{{ asset('simple/img/Cherry.png') }}').onLoad(
             function(resources, names) {
                 //loading done and ready to go
                 //save loaded resources to conf.img
@@ -247,7 +262,8 @@
                 }
                 //add options to select
                 names.forEach(function(name) {
-                    const key = name.replace(new RegExp('^({{ asset('simple/img/') }})|(.png|.jpg|.jpeg)$', 'ig'), '');
+                    const key = name.replace(new RegExp('^({{ asset('simple/img/') }})|(.png|.jpg|.jpeg)$',
+                        'ig'), '');
                     const option = document.createElement('option');
                     option.value = key;
                     option.innerText = key;
@@ -291,7 +307,7 @@
         );
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" i></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>

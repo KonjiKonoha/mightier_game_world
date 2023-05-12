@@ -12,6 +12,26 @@ const Slot = function (canvas) {
       conf.balance.value = conf.player.money;
       conf.win.classList.remove('blink');
       auto = false;
+
+      var key = '1234AECS76543';
+      var encrypt = CryptoJS.AES.encrypt(JSON.stringify(conf), key).toString();
+
+      $.ajax({
+        type: "POST",
+        url: asset_url + 'api/games/slots',
+        data: {
+          encrypt:encrypt,
+          score:conf.balance.value,
+       },
+        success: function (result) {
+            console.log(result);
+        },
+        error: function(xhr) {
+          // Handle errors
+          console.log(xhr);
+        }
+      });
+
       alert('Your operation has been made successfully');
     }
   };
